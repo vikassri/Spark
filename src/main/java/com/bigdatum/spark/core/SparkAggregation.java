@@ -17,7 +17,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
 
-public class SparkAverage 
+public class SparkAggregation 
 {
 	public static void main(String[] args)
 	{

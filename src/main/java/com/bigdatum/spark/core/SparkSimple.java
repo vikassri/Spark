@@ -8,6 +8,7 @@
 package com.bigdatum.spark.core;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -28,12 +29,17 @@ public class SparkSimple
     	JavaRDD<Integer> squareRDD = numberRdd.map(x -> x*x);
     	JavaRDD<Integer> evenRDD = numberRdd.filter(x -> x%2 == 0);
     	JavaRDD<Integer> multipliedRDD = numberRdd.flatMap(x -> Arrays.asList(x, x*2,x*3).iterator());
+    	List<Integer> numList = numberRdd.collect();
+    	
     	
     	System.out.println("Number    RDD :- " + numberRdd.collect().toString());
     	System.out.println("Square    RDD :- " + squareRDD.collect().toString());
     	System.out.println("Even   	  RDD :- " + evenRDD.collect().toString());
     	System.out.println("Multipled RDD :- " + multipliedRDD.collect().toString());
-    	
+    	System.out.println("Number List	:- " + numList);
+    	System.out.println("Take 		:- " + numberRdd.take(5));
+    	System.out.println("Count		:- " + numberRdd.count());
+    	System.out.println("Reduce		:- " + numberRdd.reduce((n1,n2) -> n1+n2));
     	jsc.close();	
     }
 }

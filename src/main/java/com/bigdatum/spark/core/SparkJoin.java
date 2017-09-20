@@ -32,11 +32,14 @@ public class SparkJoin {
 												Arrays.asList(
 													new Tuple2<String, String>("index.html","www.google.com"),
 													new Tuple2<String, String>("aboutme.html","www.Yahoo.com"),
-													new Tuple2<String, String>("home.html","www.facebook.com"))));
+													new Tuple2<String, String>("test.html","www.facebook.com"))));
 		JavaPairRDD<String,Tuple2<String,String>> joinRDD = visitsRDD.join(mapRDD);
-		System.out.println("Visit RDD :" + visitsRDD.collect().toString());
-		System.out.println("Map RDD :" + mapRDD.collect().toString());
-		System.out.println("Join RDD :" + joinRDD.collect().toString());
+		System.out.println("Visit RDD 	:" + visitsRDD.collect().toString());
+		System.out.println("Map RDD 	:" + mapRDD.collect().toString());
+		
+// printing the common keys of both RDD's its similar to having Inner join 
+		System.out.println("Join RDD 	:" + joinRDD.collect().toString());
+		
 		jsc.close();
 	}
 
